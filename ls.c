@@ -2266,11 +2266,11 @@ decode_switches (int argc, char **argv)
         }
     }
 
-  format = (0 <= format_opt ? format_opt
-            : ls_mode == LS_LS ? (stdout_isatty ()
-                                  ? many_per_line : one_per_line)
-            : ls_mode == LS_MULTI_COL ? many_per_line
-            : /* ls_mode == LS_LONG_FORMAT */ long_format);
+  /*This is my modification to default ls to a long listing format. */
+format = (0 <= format_opt ? format_opt
+          : ls_mode == LS_LS ? long_format
+          : ls_mode == LS_MULTI_COL ? many_per_line
+          : /* ls_mode == LS_LONG_FORMAT */ long_format);
 
   /* If the line length was not set by a switch but is needed to determine
      output, go to the work of obtaining it from the environment.  */
